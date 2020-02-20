@@ -29,7 +29,7 @@ exports.newEv = (cb) => {
                 html2image({
                   html: cheerio.html(kcdcDesc('table').get(0)),
                   output: path + '/tables/' + thisNo + '.png',
-                  puppeteerArgs: { defaultViewport: { width: 770, height: 250 } }
+                  puppeteerArgs: { defaultViewport: { width: 770, height: 250 }, executablePath: '/usr/bin/chromium-browser' }
                 }).then(() => cb(obj))
               } else {
                 cb(obj)
