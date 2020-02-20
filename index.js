@@ -12,6 +12,7 @@ bot.on('ready', () => {
       .setURL(ev.url)
       .setDescription(ev.desc)
       .setThumbnail('https://pbs.twimg.com/profile_images/839355661607555072/wpQw3vbQ_400x400.jpg')
+      .setFooter('이 봇은 질병관리본부에서 관리, 운영을 하지 않습니다 - 문의: "TriNet / PMH#7086"')
 
     bot.channels.forEach((c) => {
       if (c.name.endsWith('-kcdc')) {
