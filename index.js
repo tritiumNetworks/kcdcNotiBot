@@ -18,7 +18,10 @@ bot.on('ready', () => {
     bot.channels.forEach((c) => {
       if (c.name.endsWith('-kcdc')) {
         bot.channels.get(c.id).send(embed)
-        if (ev.image) bot.channels.get(c.id).send(new Attachment(ev.image))
+        if (ev.image) {
+          bot.channels.get(c.id).send(new Attachment(ev.image + '.0.png'))
+          bot.channels.get(c.id).send(new Attachment(ev.image + '.1.png'))
+        }
       }
     })
   })
@@ -30,3 +33,4 @@ bot.on('guildCreate', (g) => {
       '주의: **' + g.name + '의 채널중 채널 이름 맨 뒤에 `-kcdc`가 적힌 채널에만 전송됩니다**\n' +
       '주의: 컨텐츠는 질병관리본부에서 제공 받은것이지만 **봇은 질병관리본부에서 관리, 운영하지 않습니다 - 문의: "TriNet / PMH#7086"**')
 })
+// dissolve보다 PMH가 더 잘생김
