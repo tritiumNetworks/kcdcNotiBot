@@ -25,12 +25,18 @@ exports.newEv = (cb) => {
               })
               obj.desc = obj.desc.slice(0, 100) + '...'
               if (kcdcDesc('table')) {
-                obj.image = path + '/tables/' + thisNo + '.png'
+                obj.image = path + '/tables/' + thisNo
                 html2image({
-                  html: cheerio.html(kcdcDesc('table').get(1)),
-                  output: path + '/tables/' + thisNo + '.png',
+                  html: cheerio.html(kcdcDesc('table').get(0)),
+                  output: path + '/tables/' + thisNo + '.0.png',
                   puppeteerArgs: { defaultViewport: { width: 770, height: 250 }, executablePath: '/usr/bin/chromium-browser' }
-                }).then(() => cb(obj))
+                }).then(() => {
+                  html2image({
+                    html: cheerio.html(kcdcDesc('table').get(1)),
+                    output: path + '/tables/' + thisNo + '.1.png',
+                    puppeteerArgs: { defaultViewport: { width: 770, height: 250 }, executablePath: '/usr/bin/chromium-browser' }
+                  }).then(() => cb())
+                })
               } else {
                 cb(obj)
               }
