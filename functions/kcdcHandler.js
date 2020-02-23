@@ -27,7 +27,7 @@ exports.newEv = (cb) => {
               if (kcdcDesc('table')) {
                 obj.image = path + '/tables/' + thisNo + '.png'
                 html2image({
-                  html: cheerio.html(kcdcDesc('table').get(0)),
+                  html: cheerio.html(kcdcDesc('table').get(1)),
                   output: path + '/tables/' + thisNo + '.png',
                   puppeteerArgs: { defaultViewport: { width: 770, height: 250 }, executablePath: '/usr/bin/chromium-browser' }
                 }).then(() => cb(obj))
